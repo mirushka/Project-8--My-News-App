@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
     NewsAdapter mAdapter;
 
     //ListView
-    ListView listView;
+    ListView news_list_view;
 
     // TextView that is visible when there is a problem with the connection or the query
     TextView mEmptyView;
@@ -57,9 +57,11 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         setContentView(R.layout.activity_main);
 
         // Setting the launch screen view
+        news_list_view = (ListView) findViewById(R.id.list_view);
         LinearLayout linearLayout = (LinearLayout) findViewById(R.id.search_field);
         linearLayout.setVisibility(View.GONE);
         Button searchButton = (Button) findViewById(R.id.button_FirstSearch);
+        mEmptyView = (TextView) findViewById(R.id.empty_text_view);
 
         //Set ClickListener on Search Button Click
         searchButton.setOnClickListener(new View.OnClickListener() {
@@ -220,7 +222,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
     @Override
     public void onLoaderReset(Loader<ArrayList<News>> loader) {
         mAdapter.clear();
-        listView.setVisibility(View.GONE);
+        news_list_view.setVisibility(View.GONE);
     }
 
 }
